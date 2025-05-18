@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Citas</title>
+    <style>
+        body {
+            font-family: sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        tr:hover {
+            background-color: #f1f1f1;
+        }
+    </style>
+</head>
+<body>
+    <h1>Lista de Citas</h1>
+    <table>
+        <thead>
+            <tr>
+                <th>Fecha</th>
+                <th>Hora</th>
+                <th>Día</th>
+                <th>Semana</th>
+                <th>Médico</th>
+                <th>Paciente</th>
+                <th>Estado</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr th:each="cita : ${citas}">
+                <td th:text="${cita.fecha}"></td>
+                <td th:text="${cita.hora}"></td>
+                <td th:text="${cita.dia}"></td>
+                <td th:text="${cita.semana}"></td>
+                <td th:text="${cita.medico.nombres + ' ' + cita.medico.apellidos}"></td>
+                <td th:text="${cita.paciente.nombres + ' ' + cita.paciente.apellidos}"></td>
+                <td th:text="${cita.estado}"></td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+</html>
